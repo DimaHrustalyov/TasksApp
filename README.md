@@ -6,6 +6,10 @@
 ## How to run
 * Build project using maven
 * Run on Apache Tomcat
+ 
+## App credentials
+* Login: Admin
+* Password: 1234
 
 ## Note
 * Database table created automatically during app run
