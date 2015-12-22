@@ -7,4 +7,7 @@
 
     <import resource="classpath:ac-service.xml"/>
     <import resource="ac-admin-security.xml"/>
+
+    <bean id="builderFactory" class="com.hrustalyov.utils.json.factory.JsonBuilderFactoryImpl" />
+
 </beans>

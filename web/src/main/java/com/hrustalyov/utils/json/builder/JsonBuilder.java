@@ -1,4 +1,4 @@
-package com.hrustalyov.utils.builder;
+package com.hrustalyov.utils.json.builder;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -16,6 +16,11 @@ public final class JsonBuilder {
 		return this;
 	}
 
+	public JsonBuilder add(String name, JsonBuilder builder) {
+		valueMap.put(name, builder.build());
+		return this;
+	}
+
 	public String build() {
 		try {
 			Iterator keys = this.valueMap.keySet().iterator();
@@ -28,7 +33,11 @@ public final class JsonBuilder {
 				Object o = keys.next();
 				sb.append('"' + o.toString() + '"');
 				sb.append(':');
-				sb.append('"' + this.valueMap.get(o) + '"');
+				if (this.valueMap.get(o).startsWith("{")) {
+					sb.append(this.valueMap.get(o));
+				} else {
+					sb.append('"' + this.valueMap.get(o) + '"');
+				}
 			}
 			sb.append('}');
 			return sb.toString();

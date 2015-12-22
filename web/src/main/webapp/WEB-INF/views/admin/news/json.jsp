@@ -5,7 +5,7 @@
 <div class="page-header">
 	<h1>Thank you!</h1>
 </div>
-<p class="lead">Json has been generated in /tomcat/bin folder.</p>
+<p class="lead">Json has been generated in /WEB-INF/json/news.json folder.</p>
 
 
 

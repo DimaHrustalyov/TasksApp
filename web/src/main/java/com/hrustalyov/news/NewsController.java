@@ -1,6 +1,7 @@
 package com.hrustalyov.news;
 
-import com.hrustalyov.utils.builder.JsonBuilder;
+import com.hrustalyov.utils.json.builder.JsonBuilder;
+import com.hrustalyov.utils.json.factory.JsonBuilderFactory;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.ServletContext;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -20,6 +23,10 @@ public class NewsController {
 
 	@Autowired
 	private NewsService newsService;
+	@Autowired
+	private JsonBuilderFactory builderFactory;
+	@Autowired
+	ServletContext servletContext;
 
 	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
 	public String list(ModelMap modelMap) {
@@ -63,7 +70,7 @@ public class NewsController {
 
 		List<News> newsList = newsService.readAllNews();
 
-		try (FileWriter writer = new FileWriter("news.json")) {
+		try (FileWriter writer = new FileWriter(servletContext.getRealPath("/WEB-INF/json/news.json"))) {
 
 			for (News news : newsList) {
 				String id = news.getId().toString();
@@ -71,13 +78,15 @@ public class NewsController {
 				String brief = news.getBrief();
 				String description = news.getDescription();
 
-				String jsonNews = new JsonBuilder()
-						.add("id", id)
-						.add("title", title)
-						.add("brief", brief)
-						.add("description", description)
+				String jsonNews = builderFactory.createJsonBuilder()
+						.add("news", builderFactory.createJsonBuilder()
+								.add("metadata", builderFactory.createJsonBuilder()
+										.add("date", new Date().toString()))
+								.add("id", id)
+								.add("title", title)
+								.add("brief", brief)
+								.add("description", description))
 						.build();
-
 				writer.write(jsonNews);
 				writer.write('\n');
 			}
