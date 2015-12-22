@@ -73,7 +73,7 @@ public class NewsController {
 		try (FileWriter writer = new FileWriter(servletContext.getRealPath("/WEB-INF/json/news.json"))) {
 
 			for (News news : newsList) {
-				String id = news.getId().toString();
+				Long id = news.getId();
 				String title = news.getTitle();
 				String brief = news.getBrief();
 				String description = news.getDescription();
