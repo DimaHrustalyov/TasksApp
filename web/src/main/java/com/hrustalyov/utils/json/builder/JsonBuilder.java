@@ -34,7 +34,7 @@ public final class JsonBuilder {
 	public String build() {
 		try {
 			Iterator keys = this.valueMap.keySet().iterator();
-			StringBuffer sb = new StringBuffer('{');
+			StringBuffer sb = new StringBuffer("{");
 
 			while (keys.hasNext()) {
 				if (sb.length() > 1) {
