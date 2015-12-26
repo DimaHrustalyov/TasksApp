@@ -2,7 +2,7 @@ package com.hrustalyov.utils.json;
 
 import com.hrustalyov.utils.json.builder.JsonBuilder;
 
-public class JsonObjectValue implements JsonValue {
+public class JsonObjectValue implements JsonValueProvider {
 	private JsonBuilder jsonBuilder;
 
 	public JsonObjectValue(JsonBuilder jsonBuilder) {

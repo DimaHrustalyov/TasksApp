@@ -2,7 +2,7 @@ package com.hrustalyov.utils.json;
 
 import java.math.BigDecimal;
 
-public class JsonIntegerValue implements JsonValue {
+public class JsonIntegerValue implements JsonValueProvider {
 	private BigDecimal value;
 
 	public JsonIntegerValue(int value) {

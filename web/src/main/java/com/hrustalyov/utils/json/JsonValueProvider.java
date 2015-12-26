@@ -1,5 +1,5 @@
 package com.hrustalyov.utils.json;
 
-public interface JsonValue {
+public interface JsonValueProvider {
 	String getValue();
 }

@@ -1,6 +1,6 @@
 package com.hrustalyov.utils.json;
 
-public class JsonStringValue implements JsonValue {
+public class JsonStringValue implements JsonValueProvider {
 	private String value;
 
 	public JsonStringValue(String value) {

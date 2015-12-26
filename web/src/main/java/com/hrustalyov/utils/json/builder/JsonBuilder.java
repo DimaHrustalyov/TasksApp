@@ -3,17 +3,17 @@ package com.hrustalyov.utils.json.builder;
 import com.hrustalyov.utils.json.JsonIntegerValue;
 import com.hrustalyov.utils.json.JsonObjectValue;
 import com.hrustalyov.utils.json.JsonStringValue;
-import com.hrustalyov.utils.json.JsonValue;
+import com.hrustalyov.utils.json.JsonValueProvider;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class JsonBuilder {
-	private final Map<String, JsonValue> valueMap;
+	private final Map<String, JsonValueProvider> valueMap;
 
 	public JsonBuilder() {
-		this.valueMap = new LinkedHashMap<String, JsonValue>();
+		this.valueMap = new LinkedHashMap<String, JsonValueProvider>();
 	}
 
 	public JsonBuilder add(String name, String value) {
