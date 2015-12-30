@@ -9,10 +9,10 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>web</artifactId>
     <packaging>war</packaging>
-    <name>web Maven Webapp</name>
+    <name>web</name>
 
     <properties>
-        <tomcat.webapp.path>d:\webapps</tomcat.webapp.path>
+        <tomcat.webapp.path>d:\apache-tomcat-7.0.65\webapps</tomcat.webapp.path>
     </properties>
 
     <dependencies>
